@@ -14,18 +14,13 @@ jobs:
         failTaskOnFailedTests: true
  -  job: build_linux
     pool:
-      vmImage: 'ubuntu-16.04'
+      vmImage: 'ubuntu-22.04'
     steps:
     - task: UseDotNet@2
-      displayName: 'Use .NET Core sdk'
+      displayName: 'Use .NET Core sdk 8'
       inputs:
         packageType: sdk
-        version: 2.0.3
-    - task: UseDotNet@2
-      displayName: 'Use .NET Core sdk'
-      inputs:
-        packageType: sdk
-        version: 3.1.100
+        version: 8.0.302
     - script: ./build.sh
       displayName: 'Run build and tests'
 

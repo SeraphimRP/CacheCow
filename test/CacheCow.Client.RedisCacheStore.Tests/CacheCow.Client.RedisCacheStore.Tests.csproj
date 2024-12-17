@@ -1,31 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>netcoreapp2.1;net461;netcoreapp3.0;net5.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp2.1;netcoreapp3.0;net5.0</TargetFrameworks>		
+		<TargetFrameworks>net8.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net462;$(TargetFrameworks)</TargetFrameworks>
 		<Summary>Client constructs for HTTP Caching</Summary>
 		<AssemblyName>CacheCow.Client.RedisCacheStore.Tests</AssemblyName>
 		<PackageId>CacheCow.Client.RedisCacheStore.Tests</PackageId>
+		<PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp2.0|AnyCPU'">
-	  <DocumentationFile />
+		<DocumentationFile />
 	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Include="..\Common\DummyMessageHandler.cs" Link="DummyMessageHandler.cs" />
+		<Compile Include="..\Common\DummyMessageHandler.cs" Link="DummyMessageHandler.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
-		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.5" />
-		<PackageReference Include="xunit" Version="2.3.1" />
-		<PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
-		<PackageReference Include="Moq" Version="4.8.2" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
+		<PackageReference Include="xunit" Version="2.8.1" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.1" PrivateAssets="all" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\src\CacheCow.Common\CacheCow.Common.csproj" />
-		<ProjectReference Include="..\..\src\CacheCow.Client\CacheCow.Client.csproj" />	
-		<ProjectReference Include="..\..\src\CacheCow.Client.RedisCacheStore\CacheCow.Client.RedisCacheStore.csproj" />	
-	</ItemGroup>	
-	<ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-		<Reference Include="System" />
-	</ItemGroup>	
+		<ProjectReference Include="..\..\src\CacheCow.Client\CacheCow.Client.csproj" />
+		<ProjectReference Include="..\..\src\CacheCow.Client.RedisCacheStore\CacheCow.Client.RedisCacheStore.csproj" />
+	</ItemGroup>
 </Project>
-
